@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showOnboarding = true   // default: true
+        
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if showOnboarding {
+            OnboardingView(onFinish: {
+                withAnimation {
+                    showOnboarding = false
+                }
+            })
+        } else {
+            CustomTabView()
         }
-        .padding()
     }
 }
 
