@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -54,8 +56,18 @@ struct WelcomeView: View {
                         .padding(.trailing, 5)
                     }
                     .padding(.horizontal, 40)
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 20)
                 }
+                
+                Button {
+                    dismiss() // nutup view ini
+                } label: {
+                    Text("as Guest")
+                        .foregroundColor(.black)
+                        .font(.custom("MuktaMahee-Bold", size: 18))
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom, 20)
                 
                 HStack {
                     Text("Here for the first time?")

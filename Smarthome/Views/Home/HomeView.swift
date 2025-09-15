@@ -11,6 +11,7 @@ struct HomeView: View {
     @StateObject private var vm = DeviceViewModel()
     @StateObject private var quickAction = QuickActionViewModel()
     @StateObject private var scene = SceneViewModel()
+    @State private var showWelcome = false
         
     let columns = [
         GridItem(.flexible()),
@@ -23,7 +24,7 @@ struct HomeView: View {
                 ZStack(alignment: .topTrailing) {
                     Color.white
                         .ignoresSafeArea(edges: [.leading, .trailing, .bottom, .top])
-                        .frame(height: 230)
+                        .frame(height: 280)
                     
                     HStack {
                         VStack {
@@ -49,16 +50,16 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal, 40)
-                        .padding(.top, 90)
+                        .padding(.top, 80)
                         
                         Image("home1")
                             .resizable()
                             .scaledToFill()
-                            .ignoresSafeArea(edges: [.leading, .trailing, .bottom])
+                            .ignoresSafeArea(edges: [.leading, .top, .trailing, .bottom])
                             .frame(height: 100)
                         
                     }
-                    .padding(.top, 30)
+                    .padding(.top, 80)
                     
                     Button(action: {
                         print("Notification tapped")
@@ -72,9 +73,39 @@ struct HomeView: View {
                             .shadow(color: .black.opacity(0.4), radius: 3, x: 0, y: 2)
                     }
                     .padding(.trailing, 30)
-                    .padding(.top, 40)
+                    .padding(.top, 80)
                 }
                 .padding(.bottom, 0)
+                
+                Button(action: {
+                    showWelcome = true
+                }) {
+                    HStack() {
+                        Text(verbatim: "Login")
+                            .font(.custom("MuktaMahee-Bold", size: 20))
+                            .foregroundStyle(.white)
+                            .padding(.leading, 20)
+                            .padding(.vertical, 10)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "inset.filled.trailinghalf.arrow.trailing.rectangle")
+                            .font(.system(size: 26))
+                            .foregroundStyle(.white)
+                            .padding(.trailing, 20)
+                            .padding(.vertical, 10)
+                    }
+                    .background(.orange.opacity(0.8))
+                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                    .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 3)
+                }
+                .fullScreenCover(isPresented: $showWelcome) {
+                    NavigationStack {
+                        WelcomeView()
+                    }
+                }
                 
                 VStack {
                     HStack {
@@ -98,7 +129,7 @@ struct HomeView: View {
                             }
                         }
                         .padding(.vertical, 10)
-                        .padding(.leading, 30)
+                        .padding(.horizontal, 30)
                     }
                 }
                 
@@ -123,7 +154,7 @@ struct HomeView: View {
                             }
                         }
                         .padding(.vertical, 10)
-                        .padding(.leading, 30)
+                        .padding(.horizontal, 30)
                     }
                 }
                 
@@ -149,11 +180,12 @@ struct HomeView: View {
                             }
                         }
                         .padding(.vertical, 10)
-                        .padding(.leading, 30)
+                        .padding(.horizontal, 30)
                     }
                 }
             }
         }
+        .padding(.bottom, 80)
     }
 }
 

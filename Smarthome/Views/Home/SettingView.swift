@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @StateObject private var settingItems = SettingViewModel()
     @StateObject private var users = SharingControlViewModel()
+    @State private var showWelcome = false
     
     let columns = [
         GridItem(.flexible()),
@@ -27,9 +28,9 @@ struct SettingView: View {
                         .padding()
                     
                     VStack(alignment: .leading) {
-                        Text("Pratama One")
+                        Text("Guest")
                             .font(.custom("MuktaMahee-Bold", size: 20))
-                        Text(verbatim: "scyoung6624@gmail.com")
+                        Text(verbatim: "guest@gmail.com")
                             .font(.custom("karu-regular", size: 15))
                     }
                     
@@ -42,6 +43,37 @@ struct SettingView: View {
                         .background(Color.white)
                         .clipShape(Circle())
                         .shadow(color: .black.opacity(0.4), radius: 3, x: 0, y: 2)
+                }
+                .padding(.trailing, 20)
+                
+                Button(action: {
+                    showWelcome = true
+                }) {
+                    HStack() {
+                        Text(verbatim: "Login")
+                            .font(.custom("MuktaMahee-Bold", size: 20))
+                            .foregroundStyle(.white)
+                            .padding(.leading, 20)
+                            .padding(.vertical, 10)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "inset.filled.trailinghalf.arrow.trailing.rectangle")
+                            .font(.system(size: 26))
+                            .foregroundStyle(.white)
+                            .padding(.trailing, 20)
+                            .padding(.vertical, 10)
+                    }
+                    .background(.orange.opacity(0.8))
+                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
+                    .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 3)
+                }
+                .fullScreenCover(isPresented: $showWelcome) {
+                    NavigationStack {
+                        WelcomeView()
+                    }
                 }
                 
                 LazyVGrid(columns: columns, spacing: 20) {
@@ -81,7 +113,7 @@ struct SettingView: View {
                         .padding(.bottom, 20)
                     
                     ScrollView {
-                        LazyVStack(spacing: 0) { // spacing 0 biar rapet, kita kontrol manual
+                        LazyVStack(spacing: 0) {
                             ForEach(users.users) { user in
                                 HStack {
                                     Circle()
@@ -118,7 +150,8 @@ struct SettingView: View {
             }
             .padding(.horizontal, 20)
         }
-        .padding(.top, 50)
+        .padding(.top, 70)
+        .padding(.bottom, 80)
     }
 }
 

@@ -62,12 +62,12 @@ struct CustomTabView: View {
                     .padding(.top, 10)
                     .scaledToFit()
                     .frame(width: 35, height: 35)
-                    .foregroundStyle(selectedTab == tab ? .red.opacity(0.8) : .gray.opacity(0.8))
+                    .foregroundStyle(selectedTab == tab ? .orange.opacity(0.8) : .gray.opacity(0.8))
                     .fontWeight(.bold)
                 
                 Text(label)
                     .font(.caption)
-                    .foregroundStyle(selectedTab == tab ? .red.opacity(0.8) : .gray.opacity(0.8))
+                    .foregroundStyle(selectedTab == tab ? .orange.opacity(0.8) : .gray.opacity(0.8))
             }
         }
     }
