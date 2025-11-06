@@ -109,7 +109,7 @@ struct SettingView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Sharing & Control")
                         .font(.custom("MuktaMahee-Bold", size: 22))
-                        .padding(.horizontal)
+                        .padding(.horizontal, 0)
                         .padding(.bottom, 20)
                     
                     ScrollView {
@@ -145,10 +145,11 @@ struct SettingView: View {
                         }
                         .background(Color.white)
                     }
+                    
                 }
-                
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 10)
         }
         .padding(.top, 70)
         .padding(.bottom, 80)

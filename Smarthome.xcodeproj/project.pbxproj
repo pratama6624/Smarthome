@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4198EF512EBCF4290006CDDC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4198EF502EBCF4200006CDDC /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		416F83D52E70F7CE00C1B0A9 /* Smarthome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smarthome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4198EF502EBCF4200006CDDC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		416F83CC2E70F7CE00C1B0A9 = {
 			isa = PBXGroup;
 			children = (
+				4198EF502EBCF4200006CDDC /* README.md */,
 				416F83D72E70F7CE00C1B0A9 /* Smarthome */,
 				416F83D62E70F7CE00C1B0A9 /* Products */,
 			);
@@ -122,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4198EF512EBCF4290006CDDC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
